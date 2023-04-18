@@ -6,6 +6,56 @@ from bs4 import BeautifulSoup
 import requests
 
 
+## day45 project: 100 movies that you must watch
+# -------------------- WORKING WITH INTERNET ARCHIVE DATA --------------------
+"""variable to store address"""
+iaEndpoint = "https://web.archive.org/web/20200518073855/https://www.empireonline.com/movies/features/best-movies-2/"
+
+"""variable to store the response"""
+iaResponse = requests.get(url=iaEndpoint)
+iaResponse.raise_for_status()
+
+"""variable tp store the data"""
+iaWebpage = iaResponse.text
+
+"""created the soup object"""
+soup = BeautifulSoup(iaWebpage, "html.parser")
+
+"""list to store all the movies name"""
+iaMoviesList = []
+
+"""getting all the movies"""
+iaMovies = soup.findAll(name="h3", class_="title")
+
+"""loop to iterate over iaMovies"""
+for movie in iaMovies:
+    iaMoviesList.append(movie.getText())
+
+print(iaMoviesList)
+
+"""moving the data to a text file"""
+with open("movies.txt", "a") as file:
+    for movie in range(-1, -(len(iaMoviesList) + 1), -1):
+        file.write(f"{iaMoviesList[movie]}\n")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # # -------------------- WORKING WITH HACKERNEWS --------------------
 # """variable to store the address for hackernews"""
 # hnEndpoint = "https://news.ycombinator.com"
