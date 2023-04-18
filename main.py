@@ -8,3 +8,19 @@ with open("index.html") as file:
 """created soup object"""
 soup = BeautifulSoup(contents, "html.parser")
 
+# """getting all anchor tags"""
+# allAnchorTags = soup.find_all(name="a")
+
+# """getting all anchor tags"""
+# print(allAnchorTags)
+
+# for i in allAnchorTags:
+#     # """getting the texts of anchor tags"""
+#     # print(i.getText())
+#
+#     """getting all the href of anchor tags"""
+#     print(i.get("href"))
+
+# """getting particulars"""
+# collegeUrl = soup.select_one("p a").get("href")
+# print(collegeUrl)
